@@ -6,6 +6,7 @@
     "Site2015ENV": true
   },
   "browser" : true,
+  "node" : true,
   "boss" : true,
   "curly": true,
   "debug": false,
