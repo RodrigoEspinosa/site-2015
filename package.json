@@ -1,0 +1,22 @@
+{
+  "name": "jsconfuy-site-2015",
+  "version": "0.0.1",
+  "description": "The JSConfUY 2015 site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsconfuy/site-2015"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsconfuy/site-2015/issues"
+  },
+  "homepage": "https://github.com/jsconfuy/site-2015",
+  "dependencies": {
+    "hapi": "^6.8.1"
+  }
+}
