@@ -50,12 +50,15 @@ var dummyProposal = {
   description: loremIpsum
 };
 
+var proposals = [];
+for (var i=0; i<20; i++) proposals.push(dummyProposal);
+
 server.route({
   method: 'GET',
   path: '/admin',
   handler: function (request, reply) {
     reply.view('admin/index.html', {
-      proposals: new Array(20).join(dummyProposal)
+      proposals: proposals
     });
   }
 });
