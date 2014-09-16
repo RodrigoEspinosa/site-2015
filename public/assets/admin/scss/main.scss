@@ -3,10 +3,18 @@
 // Import bootflat variables, extends, Mixins
 @import "bootflat";
 
+body {
+  padding-top: 40px;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 0;
+  }
+}
+
 // Proposal style
 .proposal {
-  border-right: 1px solid $grass-light;
-  border-bottom: 1px solid $grass-light;
+  border-right: 1px solid $aqua-light;
+  border-bottom: 1px solid $aqua-light;
   padding: 40px;
   margin: 10px 0;
 }

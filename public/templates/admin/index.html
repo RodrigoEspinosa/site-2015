@@ -32,14 +32,51 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link</a></li>
+                {{#if speakers}}
+                  <li class="active"><a href="#speakers">Speakers</a></li>
+                {{/if}}
+                {{#if sponsors}}
+                  <li class="active"><a href="#sponsors">Sponsors</a></li>
+                {{/if}}
+                <li class="active"><a href="#proposals">Proposals</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
       </div>
 
-      <div class="row">
+      {{#if speakers}}
+        <div class="row" id="speakers">
+          <div class="col-md-12">
+            <h3>Speakers</h3>
+
+            {{#each speakers}}
+                <div class="speaker col-md-4">
+                  <strong class="text-primary initialism">{{ title }}</strong>
+                  <p>{{ description }}</p>
+                </div>
+            {{/each}}
+          </div>
+        </div><!-- /row -->
+      {{/if}}
+
+
+      {{#if sponsors}}
+        <div class="row" id="sponsors">
+          <div class="col-md-12">
+            <h3>Sponsors</h3>
+
+            {{#each sponsors}}
+                <div class="sponsor col-md-4">
+                  <strong class="text-primary initialism">{{ title }}</strong>
+                  <p>{{ description }}</p>
+                </div>
+            {{/each}}
+          </div>
+        </div><!-- /row -->
+      {{/if}}
+
+      <div class="row" id="proposals">
         <div class="col-md-12">
           <h3>Proposals</h3>
 
@@ -48,6 +85,8 @@
                 <strong class="text-primary initialism">{{ title }}</strong>
                 <p>{{ description }}</p>
               </div>
+          {{else}}
+              <p class="lead">There are no proposals yet!</p>
           {{/each}}
         </div>
       </div><!-- /row -->
