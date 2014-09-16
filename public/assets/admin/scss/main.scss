@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+// Import bootflat variables, extends, Mixins
+@import "bootflat";
+
+// Proposal style
+.proposal {
+  border-right: 1px solid $grass-light;
+  border-bottom: 1px solid $grass-light;
+  padding: 40px;
+  margin: 10px 0;
+}
