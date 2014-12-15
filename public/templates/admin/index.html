@@ -14,7 +14,6 @@
   </head>
 
   <body>
-
     <div class="container">
       <div class="row">
         <nav class="navbar navbar-default" role="navigation">
@@ -41,6 +40,9 @@
                 <li class="active"><a href="#proposals">Proposals</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
+            <div class="pull-right">
+              {{ request.auth.credentials.profile.username }}
+            </div>
           </div><!-- /.container-fluid -->
         </nav>
       </div>
@@ -81,12 +83,17 @@
           <h3>Proposals</h3>
 
           {{#each proposals}}
-              <div class="proposal col-md-4">
-                <strong class="text-primary initialism">{{ title }}</strong>
-                <p>{{ description }}</p>
+            <div class="proposal col-md-4">
+              <strong class="text-primary initialism">{{ title }}</strong>
+              <p>{{ description }}</p>
+              <div class="proposal-vote pull-right">
+                <a class="label label-primary">Must have</a>
+                <a class="label">Like</a>
+                <a class="label">Don't like</a>
               </div>
+            </div>
           {{else}}
-              <p class="lead">There are no proposals yet!</p>
+            <p class="lead">There are no proposals yet!</p>
           {{/each}}
         </div>
       </div><!-- /row -->
@@ -100,5 +107,6 @@
     <script src="https://bootflat.github.io/bootflat/js/jquery.fs.selecter.min.js"></script>
     <script src="https://bootflat.github.io/bootflat/js/jquery.fs.stepper.min.js"></script>
 
+    <script src="/admin/js/main.js"></script>
   </body>
 </html>
