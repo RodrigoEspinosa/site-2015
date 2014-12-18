@@ -5,6 +5,8 @@
       talksControllers = require('./../server/controllers/talks.js');
 
   module.exports = [
+  	{ method: 'GET', path: '/', handler: function (req, rep) { return rep.view('index.html'); }}
+
     { method: 'GET', path: '/admin', config: adminControllers.index },
     { method: ['GET', 'POST'], path: '/admin/login', config: adminControllers.login },
     { method: 'GET', path: '/admin/logout', config: adminControllers.logout },
