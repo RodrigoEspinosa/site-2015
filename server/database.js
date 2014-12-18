@@ -10,6 +10,10 @@
   // Connect to the database
   mongoose.connect('mongodb://localhost');
 
+  module.exports.Proposal = mongoose.model('Proposal', {
+    text: String
+  });
+
   module.exports.Speaker = mongoose.model('Spekaer', {
     name: String,
     email: String

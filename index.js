@@ -6,16 +6,17 @@
 var Hapi = require('hapi'),
     Good = require('good'),
     Path = require('path'),
-    routes = require('./config/routes');
+    routes = require('./config/routes'),
 
     // siteAssets = require('./server/assets'),
     // siteDatabase = require('./server/database'),
-    // siteAuthentication = require('./server/auth'),
+    siteAuthentication = require('./server/auth'),
     // siteAdministration = require('./server/admin');
+    // Set the server instance and configuration
+    server = new Hapi.Server();
 
-// Set the server instance and configuration
-var server = new Hapi.Server();
 server.connection({ port: 3000 });
+
 server.views({
   engines: {
     html: require('handlebars')
@@ -33,7 +34,7 @@ server.views({
 // siteDatabase(server);
 
 // Set the site authentication
-// siteAuthentication(server);
+siteAuthentication(server);
 
 // Set the site routes
 routes.forEach(function (route) {
@@ -42,9 +43,6 @@ routes.forEach(function (route) {
 
 // Set the site assets
 // siteAssets(server);
-
-// Set the site administration
-// siteAdministration(server);
 
 server.register({
   register: Good,
