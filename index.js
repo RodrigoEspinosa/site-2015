@@ -8,10 +8,8 @@ var Hapi = require('hapi'),
     Path = require('path'),
     routes = require('./config/routes'),
 
-    // siteAssets = require('./server/assets'),
-    // siteDatabase = require('./server/database'),
     siteAuthentication = require('./server/auth'),
-    // siteAdministration = require('./server/admin');
+
     // Set the server instance and configuration
     server = new Hapi.Server();
 
@@ -30,9 +28,6 @@ server.views({
   helpersPath: Path.join('public', 'templates', 'helpers'),
 });
 
-// Set the site database
-// siteDatabase(server);
-
 // Set the site authentication
 siteAuthentication(server);
 
@@ -40,9 +35,6 @@ siteAuthentication(server);
 routes.forEach(function (route) {
   server.route(route);
 });
-
-// Set the site assets
-// siteAssets(server);
 
 server.register({
   register: Good,
