@@ -1,0 +1,133 @@
+// Sizes
+$cube-height: 10em;
+$cube-width: $cube-height;
+
+.jsconfuy-cube {
+  // position: absolute;
+  height: $cube-height;
+  width: $cube-width;
+  // top: calc(50% - ($cube-height / 2));
+  // left: calc(50% - ($cube-width / 2));
+  -webkit-transition: all 0.5s;
+  margin: auto;
+}
+
+.perspective {
+  // left: 50%;
+  // position: absolute;
+  // top: 50%;
+  -webkit-transform: rotateX(45deg) rotateZ(45deg);
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 1s;
+
+  .cube,
+  .cube:after,
+  .cube:before {
+    background-color: rgb(4, 152, 194);
+    box-shadow: 0 0 0 6px rgb(3, 120, 153) inset;
+    content: '';
+    height: 10em;
+    position: absolute;
+    width: 10em;
+    -webkit-transition: all 0.5s;
+  }
+  .cube {
+    background-image: url("http://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png");
+    background-repeat: no-repeat;
+    position: relative;
+    -webkit-transform: rotateZ(0deg) translateZ(10em);
+    -webkit-transform-style: preserve-3d;
+    &:after {
+      background-image: url("http://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png");
+      background-repeat: no-repeat;
+      -webkit-transform: rotateX(-90deg) translateY(10em);
+      -webkit-transform-origin: 100% 100%;
+      -webkit-opacity: 0.85;
+    }
+    &:before {
+      background-image: url("http://mwdg.us/jsconfuy/cube-1.svg");
+      background-repeat: no-repeat;
+      -webkit-transform: rotateY(90deg) translateX(10em);
+      -webkit-transform-origin: 100% 0;
+      -webkit-opacity: 0.7;
+    }
+  }
+
+}
+
+// .title {
+//   left: 50%;
+//   margin: 20px 0;
+//   position: absolute;
+//   top: -webkit-calc(50% + 160px);
+//   width: 0;
+//   -webkit-transition: all 1s;
+//   &:after {
+//     color: transparent;
+//     content: "";
+//     display: block;
+//     font-size: 1em;
+//     height: 20px;
+//     text-align: left;
+//     width: 200px;
+//     -webkit-transition: all 1s;
+//   }
+// }
+
+input[name='rotate'] {
+  display: none;
+}
+
+
+#left:checked ~ .perspective {
+  -webkit-transform: rotateX(90deg) rotateZ(0deg);
+
+  .cube {
+    &:after {
+      background-image: url("http://mwdg.us/jsconfuy/cube-2.svg");
+      background-repeat: no-repeat;
+      opacity: 1;
+    }
+  }
+}
+// #left:checked ~ .title {
+//   &:after {
+//     color: #fff;
+//     content: "Call for Proposal";
+//   }
+// }
+#right:checked ~ .perspective {
+  -webkit-transform: rotateX(90deg) rotateZ(90deg);
+
+  .cube {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+// #right:checked ~ .title {
+//   &:after {
+//     color: #fff;
+//     content: "Coming soon";
+//   }
+// }
+#up:checked ~ .perspective {
+  -webkit-transform: rotateX(0deg) rotateZ(45deg);
+
+  .cube {
+    background-color: #FFFFFA;
+    background-image: url("http://mwdg.us/jsconfuy/cube-3.svg");
+    background-repeat: no-repeat;
+  }
+}
+// #up:checked ~ .title {
+//   &:after {
+//     color: #fff;
+//     content: "Follow us!";
+//   }
+// }
+#left:checked ~ .perspective .cube:after,
+#right:checked ~ .perspective .cube:before,
+#up:checked ~ .perspective .cube {
+  border-radius: 5px;
+}

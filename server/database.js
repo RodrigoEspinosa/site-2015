@@ -10,6 +10,11 @@
   // Connect to the database
   mongoose.connect('mongodb://localhost');
 
+  // Handle mongodb connection error
+  mongoose.connection.on('error', function (error) {
+    console.error(error);
+  });
+
   module.exports.Proposal = mongoose.model('Proposal', {
     text: String
   });

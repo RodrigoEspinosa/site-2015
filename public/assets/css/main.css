@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+
+body {
+  background-color: #073151;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  min-height: 100%;
+  overflow: hidden; }
+
+.jsconfuy-cube {
+  height: 10em;
+  width: 10em;
+  -webkit-transition: all 0.5s;
+  margin: auto; }
+
+.perspective {
+  -webkit-transform: rotateX(45deg) rotateZ(45deg);
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 1s; }
+  .perspective .cube, .perspective .cube:after, .perspective .cube:before {
+    background-color: #0498c2;
+    box-shadow: 0 0 0 6px #037899 inset;
+    content: '';
+    height: 10em;
+    position: absolute;
+    width: 10em;
+    -webkit-transition: all 0.5s; }
+  .perspective .cube {
+    background-image: url("http://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png");
+    background-repeat: no-repeat;
+    position: relative;
+    -webkit-transform: rotateZ(0deg) translateZ(10em);
+    -webkit-transform-style: preserve-3d; }
+    .perspective .cube:after {
+      background-image: url("http://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png");
+      background-repeat: no-repeat;
+      -webkit-transform: rotateX(-90deg) translateY(10em);
+      -webkit-transform-origin: 100% 100%;
+      -webkit-opacity: 0.85; }
+    .perspective .cube:before {
+      background-image: url("http://mwdg.us/jsconfuy/cube-1.svg");
+      background-repeat: no-repeat;
+      -webkit-transform: rotateY(90deg) translateX(10em);
+      -webkit-transform-origin: 100% 0;
+      -webkit-opacity: 0.7; }
+
+input[name='rotate'] {
+  display: none; }
+
+#left:checked ~ .perspective {
+  -webkit-transform: rotateX(90deg) rotateZ(0deg); }
+  #left:checked ~ .perspective .cube:after {
+    background-image: url("http://mwdg.us/jsconfuy/cube-2.svg");
+    background-repeat: no-repeat;
+    opacity: 1; }
+
+#right:checked ~ .perspective {
+  -webkit-transform: rotateX(90deg) rotateZ(90deg); }
+  #right:checked ~ .perspective .cube:before {
+    opacity: 1; }
+
+#up:checked ~ .perspective {
+  -webkit-transform: rotateX(0deg) rotateZ(45deg); }
+  #up:checked ~ .perspective .cube {
+    background-color: #FFFFFA;
+    background-image: url("http://mwdg.us/jsconfuy/cube-3.svg");
+    background-repeat: no-repeat; }
+
+#left:checked ~ .perspective .cube:after, #right:checked ~ .perspective .cube:before, #up:checked ~ .perspective .cube {
+  border-radius: 5px; }
+
+.page {
+  display: none;
+  position: absolute;
+  top: calc(50% - 120px);
+  right: 8em;
+  width: 16em;
+  z-index: -1; }
+  .page.active {
+    display: block; }
+  .page form {
+    position: relative;
+    opacity: 0;
+    left: -200px; }
+
+.form-input[type='email'], .form-input[type='text'] {
+  background: white;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 10px;
+  width: 100%; }

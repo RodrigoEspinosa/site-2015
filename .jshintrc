@@ -5,6 +5,7 @@
     "-Promise": true,
     "Site2015ENV": true
   },
+  "jquery": true,
   "browser" : true,
   "node" : true,
   "boss" : true,

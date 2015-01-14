@@ -1,34 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <title>JSConfUY 2015</title>
-  <style type="text/css">
-    body, html {
-      padding: 0;
-      margin: 0;
-    }
-    .container {
-      text-align: center;
-      position: relative;
-      width: 300px;
-      margin: 18% auto 0;
-    }
-    img {
-      border-radius: 10px;
-      border: 5px solid #fff;
-      box-shadow: 0 0 10px -3px #777;
-    }
-    p {
-      font-size: 14px;
-      font-family: sans-serif;
-      color: #555;
-    }
-  </style>
+  <title>{{ siteTitle }}</title>
+  <link rel="stylesheet" href="{{ mainCss }}">
 </head>
 <body>
-  <div class="container">
-    <img src="./images/logo.png" alt="JSConfUY Logo" />
-    <p>Coming soon...</p>
-  </div>
+  <header class="jsconfuy-cube">
+    <input type="radio" id="left" name="rotate">
+    <input type="radio" id="reset" name="rotate" checked>
+    <input type="radio" id="right" name="rotate">
+    <input type="radio" id="up" name="rotate">
+
+    <div class="perspective">
+      <div class="cube"></div>
+    </div>
+    <span class="title"><!-- Display the current section --></span>
+  </header>
+
+  <!-- <div class="container"> -->
+    <!-- <section class="home page" data-cube-title="Home"></section> -->
+
+    <!-- <section class="coming-soon page" data-cube-title="Coming soon"></section> -->
+
+    <section class="cfp page" data-cube-title="Call for proposals">
+      <form action="/proposal" method="post">
+        <input type="text" class="form-input" placeholder="Name..." name="speaker-name">
+        <input type="email" class="form-input" placeholder="Email..." name="speaker-email">
+        <!-- <input type="submit" class="form-input"> -->
+      </form>
+    </section>
+
+    <!-- <section class="twitter page" data-cube-title="Follow us!"></section> -->
+  <!-- </div> -->
+
+  <footer class="jsconfuy-nav">
+    <nav></nav>
+  </footer>
+
+  <!-- scripts -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

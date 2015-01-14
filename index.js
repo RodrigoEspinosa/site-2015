@@ -26,6 +26,10 @@ server.views({
   path: Path.join('public', 'templates'),
   layoutPath: Path.join('public', 'templates', 'layouts'),
   helpersPath: Path.join('public', 'templates', 'helpers'),
+  context: {
+    siteTitle: 'JSConfUY 2015',
+    mainCss: './css/main.css'
+  }
 });
 
 // Set the site authentication
