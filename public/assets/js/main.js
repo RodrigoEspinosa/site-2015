@@ -8,72 +8,94 @@
         RIGHT: 39,
         DOWN: 40
       },
-      cube = $('.jsconfuy-cube .perspective .cube'),
-      title = $('.jsconfuy-cube .title');
+      $cube = $('.jsconfuy-cube .perspective .cube'),
+      $title = $('.jsconfuy-cube .title');
 
-  App.controllers = {
-    homeView: function () {
-      App.sections.HOME.$el.showPage();
-      App.sections.HOME.section.trigger('click');
-      cube.removeClass('pull-left');
-      title.html('');
-    },
-    cfpView: function () {
-      App.sections.CFP.$el.showPage();
-      App.sections.CFP.section.trigger('click');
-      cube.addClass('pull-left');
-      title.html('Call for proposals');
-    },
-    commingSoonView: function () {
-      App.sections.COMMING_SOON.$el.showPage();
-      App.sections.COMMING_SOON.section.trigger('click');
-      cube.removeClass('pull-left');
-      title.html('Comming soon');
-    },
-    twitterView: function () {
-      App.sections.TWITTER.$el.showPage();
-      App.sections.TWITTER.section.trigger('click');
-      cube.removeClass('pull-left');
-      title.html('Follow us!');
+  var View = function (_title, _view, _options) {
+    this.id = View.prototype.uniqueID();
+
+    this.title = _title;
+    this.view = _view;
+
+    this.options = $.extend({
+      pullLeft: false
+    }, _options);
+  };
+  View.prototype.uniqueID = function () {
+    View.prototype.idCounter = View.prototype.idCounter || 0;
+    View.prototype.idCounter += 1;
+    return View.prototype.idCounter;
+  };
+  View.prototype.render = function () {
+    var self = this;
+
+    App.currentView = this.id;
+
+    this.view.$el.showPage();
+    this.view.section.trigger('click');
+
+    $title.removeClass('active').html('');
+    $cube.removeClass('pull-left');
+
+    if (this.options.pullLeft) {
+      $cube.addClass('pull-left');
     }
+
+    $cube.one('transitionend', function () {
+      var t = setTimeout(function () {
+        $title.html(self.title);
+        $title.addClass('active');
+      }, 350);
+    });
   };
 
   App.sections = {
     CFP: {
       $el: $('section.cfp'),
-      section: $('#left'),
-      view: App.controllers.cfpView
+      section: $('#left')
     },
     HOME: {
       $el: $('section.home'),
-      section: $('#reset'),
-      view: App.controllers.homeView
+      section: $('#reset')
     },
     COMMING_SOON: {
       $el: $('section.coming-soon'),
-      section: $('#right'),
-      view: App.controllers.commingSoonView
+      section: $('#right')
     },
     TWITTER: {
       $el: $('section.twitter'),
-      section: $('#up'),
-      view: App.controllers.twitterView
+      section: $('#up')
     }
+  };
+
+  App.controllers = {
+    homeView: new View('', App.sections.HOME),
+    cfpView: new View('Call for proposals', App.sections.CFP, {pullLeft: true}),
+    commingSoonView: new View('Comming soon', App.sections.COMMING_SOON),
+    twitterView: new View('Follow us!', App.sections.TWITTER)
   };
 
   $(document).on('keyup', function (e) {
     switch (e.which) {
       case arrows.LEFT:
-        App.sections.CFP.view();
+        if (App.currentView !== App.controllers.cfpView.id) {
+          App.controllers.cfpView.render();
+        }
         break;
       case arrows.UP:
-        App.sections.TWITTER.view();
+        if (App.currentView !== App.controllers.twitterView.id) {
+          App.controllers.twitterView.render();
+        }
         break;
       case arrows.RIGHT:
-        App.sections.COMMING_SOON.view();
+        if (App.currentView !== App.controllers.commingSoonView.id) {
+          App.controllers.commingSoonView.render();
+        }
         break;
       case arrows.DOWN:
-        App.sections.HOME.view();
+        if (App.currentView !== App.controllers.homeView.id) {
+          App.controllers.homeView.render();
+        }
         break;
     }
   });
@@ -94,6 +116,7 @@
     });
 
     $('.perspective').one('transitionend', function () {
+      $cube.trigger('transitionend');
       $page.addClass('active').children().animate({
         opacity: 1,
         left: 0,
