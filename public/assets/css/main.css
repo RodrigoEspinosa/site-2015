@@ -56,6 +56,10 @@ body {
       -webkit-transform: rotateY(90deg) translateX(10em);
       -webkit-transform-origin: 100% 0;
       -webkit-opacity: 0.7; }
+    .perspective .cube.pull-left {
+      -webkit-transform: translateX(-15em) translateZ(10em);
+      -webkit-transform-origin: 100% 100%;
+      -webkit-opacity: 0.85; }
 
 input[name='rotate'] {
   display: none; }

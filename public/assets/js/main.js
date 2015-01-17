@@ -1,53 +1,81 @@
 (function ($) {
   'use strict';
 
-  var LEFT_ARROW = 37,
-      RIGHT_ARROW = 39,
-      currentState = 1,
-      App = {};
+  var App = {},
+      arrows = {
+        LEFT: 37,
+        UP: 38,
+        RIGHT: 39,
+        DOWN: 40
+      },
+      cube = $('.jsconfuy-cube .perspective .cube'),
+      title = $('.jsconfuy-cube .title');
 
   App.controllers = {
     homeView: function () {
-      $('#reset').trigger('click');
-      $('section.home').showPage();
-      // $('.jsconfuy-cube').css('left', 'calc(50% - 5em)');
+      App.sections.HOME.$el.showPage();
+      App.sections.HOME.section.trigger('click');
+      cube.removeClass('pull-left');
+      title.html('');
     },
     cfpView: function () {
-      $('#left').trigger('click');
-      $('section.cfp').showPage();
-      // var cubePosX = $('section.cfp').data('cube-pos-x');
-      // alert(cubePosX);
-      // $('.jsconfuy-cube').css('left', cubePosX);
+      App.sections.CFP.$el.showPage();
+      App.sections.CFP.section.trigger('click');
+      cube.addClass('pull-left');
+      title.html('Call for proposals');
     },
     commingSoonView: function () {
-      $('#right').trigger('click');
-      $('section.coming-soon').showPage();
-      // $('.jsconfuy-cube').css('left', 'calc(50% - 5em)');
+      App.sections.COMMING_SOON.$el.showPage();
+      App.sections.COMMING_SOON.section.trigger('click');
+      cube.removeClass('pull-left');
+      title.html('Comming soon');
     },
     twitterView: function () {
-      $('#up').trigger('click');
-      $('section.twitter').showPage();
+      App.sections.TWITTER.$el.showPage();
+      App.sections.TWITTER.section.trigger('click');
+      cube.removeClass('pull-left');
+      title.html('Follow us!');
     }
   };
 
-  App.views = {
-    0: App.controllers.cfpView,
-    1: App.controllers.homeView,
-    2: App.controllers.commingSoonView,
-    3: App.controllers.twitterView
+  App.sections = {
+    CFP: {
+      $el: $('section.cfp'),
+      section: $('#left'),
+      view: App.controllers.cfpView
+    },
+    HOME: {
+      $el: $('section.home'),
+      section: $('#reset'),
+      view: App.controllers.homeView
+    },
+    COMMING_SOON: {
+      $el: $('section.coming-soon'),
+      section: $('#right'),
+      view: App.controllers.commingSoonView
+    },
+    TWITTER: {
+      $el: $('section.twitter'),
+      section: $('#up'),
+      view: App.controllers.twitterView
+    }
   };
 
-  $(document).on('keyup', function (event) {
-    if (event.which === LEFT_ARROW) {
-      currentState -= (currentState > 0) ? 1 : 0;
-    } else if (event.which === RIGHT_ARROW) {
-      currentState += (currentState < 3) ? 1 : 0;
-    } else {
-      return this;
+  $(document).on('keyup', function (e) {
+    switch (e.which) {
+      case arrows.LEFT:
+        App.sections.CFP.view();
+        break;
+      case arrows.UP:
+        App.sections.TWITTER.view();
+        break;
+      case arrows.RIGHT:
+        App.sections.COMMING_SOON.view();
+        break;
+      case arrows.DOWN:
+        App.sections.HOME.view();
+        break;
     }
-
-    // Reload the view
-    App.views[currentState]();
   });
 
   $.fn.showPage = function (page) {

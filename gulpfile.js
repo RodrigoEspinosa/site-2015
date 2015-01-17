@@ -15,7 +15,7 @@ gulp.task('sass', function () {
 
 gulp.task('webserver', function() {
   gulp.src('.').pipe(webserver({
-    // root: 'index.js',
+    root: 'index.js',
     port: 3000,
     livereload: true
   }));
