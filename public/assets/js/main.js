@@ -50,8 +50,7 @@
     });
   };
   View.prototype.showPage = function () {
-    var self = this,
-        $page = this.view.$el;
+    var $page = this.view.$el;
 
     $('section.page').each(function () {
       $(this).removeClass('active').children().animate({
@@ -104,29 +103,20 @@
     commingSoonView: new View('Comming soon', App.sections.COMMING_SOON),
     twitterView: new View('Follow us!', App.sections.TWITTER)
   };
-  App.controllers.homeView.render();
 
   $(document).on('keyup', function (e) {
     switch (e.which) {
       case arrows.LEFT:
-        if (App.currentView !== App.controllers.cfpView.id) {
-          App.controllers.cfpView.render();
-        }
+        renderView(App.controllers.cfpView);
         break;
       case arrows.UP:
-        if (App.currentView !== App.controllers.twitterView.id) {
-          App.controllers.twitterView.render();
-        }
+        renderView(App.controllers.twitterView);
         break;
       case arrows.RIGHT:
-        if (App.currentView !== App.controllers.commingSoonView.id) {
-          App.controllers.commingSoonView.render();
-        }
+        renderView(App.controllers.commingSoonView);
         break;
       case arrows.DOWN:
-        if (App.currentView !== App.controllers.homeView.id) {
-          App.controllers.homeView.render();
-        }
+        renderView(App.controllers.homeView);
         break;
     }
   });
@@ -140,29 +130,29 @@
 
         switch (this.panEvent) {
           case 'panleft':
-            if (App.currentView !== App.controllers.cfpView.id) {
-              App.controllers.cfpView.render();
-            }
+            renderView(App.controllers.cfpView);
             break;
           case 'panup':
-            if (App.currentView !== App.controllers.twitterView.id) {
-              App.controllers.twitterView.render();
-            }
+            renderView(App.controllers.twitterView);
             break;
           case 'panright':
-            if (App.currentView !== App.controllers.commingSoonView.id) {
-              App.controllers.commingSoonView.render();
-            }
+            renderView(App.controllers.commingSoonView);
             break;
           case 'pandown':
-            if (App.currentView !== App.controllers.homeView.id) {
-              App.controllers.homeView.render();
-            }
+            renderView(App.controllers.homeView);
             break;
         }
 
         this.panEvent = void 0;
       }
     });
+
+  function renderView (view) {
+    if (App.currentView !== view.id) {
+      view.render();
+    }
+  }
+
+  renderView(App.controllers.homeView);
 
 }(jQuery));
