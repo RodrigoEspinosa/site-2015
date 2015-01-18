@@ -35,8 +35,23 @@
       -webkit-transform-origin: 100% 0;
       -webkit-opacity: 0.7; }
     .perspective .cube.pull-left {
-      -webkit-transform: translateX(-15em);
-    }
+      -webkit-transform: translateX(-11em) translateZ(10em);
+      -webkit-transform-origin: 100% 100%;
+      -webkit-opacity: 0.85; }
+
+.title {
+  opacity: 0;
+  color: #fff;
+  position: absolute;
+  font-size: 24px;
+  top: 0;
+  left: 0;
+  text-align: center;
+  -webkit-transition: opacity 0.5s;
+  font-family: 'dosisextralight'; }
+  .title.active {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s; }
 
 input[name='rotate'] {
   display: none; }
@@ -48,10 +63,20 @@ input[name='rotate'] {
     background-repeat: no-repeat;
     opacity: 1; }
 
+#left:checked ~ .perspective .title {
+  width: 220px;
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateX(-90deg) rotateZ(0deg) translateZ(0em) translateX(-8.5em) translateY(2.5em); }
+
 #right:checked ~ .perspective {
   -webkit-transform: rotateX(90deg) rotateZ(90deg); }
   #right:checked ~ .perspective .cube:before {
     opacity: 1; }
+
+#right:checked ~ .perspective .title {
+  width: 200px;
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateX(-90deg) rotateY(90deg) translateY(2em) translateX(-6.9em); }
 
 #up:checked ~ .perspective {
   -webkit-transform: rotateX(0deg) rotateZ(45deg); }
@@ -59,6 +84,10 @@ input[name='rotate'] {
     background-color: #FFFFFA;
     background-image: url("http://mwdg.us/jsconfuy/cube-3.svg");
     background-repeat: no-repeat; }
+
+#up:checked ~ .perspective .title {
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateZ(-45deg) translateZ(0em) translateX(-1.8em) translateY(11em); }
 
 #left:checked ~ .perspective .cube:after, #right:checked ~ .perspective .cube:before, #up:checked ~ .perspective .cube {
   border-radius: 5px; }

@@ -51,28 +51,31 @@ $cube-width: $cube-height;
       -webkit-transform-origin: 100% 0;
       -webkit-opacity: 0.7;
     }
+    &.pull-left {
+      -webkit-transform: translateX(-11em) translateZ(10em);
+      -webkit-transform-origin: 100% 100%;
+      -webkit-opacity: 0.85;
+    }
   }
 
 }
 
-// .title {
-//   left: 50%;
-//   margin: 20px 0;
-//   position: absolute;
-//   top: -webkit-calc(50% + 160px);
-//   width: 0;
-//   -webkit-transition: all 1s;
-//   &:after {
-//     color: transparent;
-//     content: "";
-//     display: block;
-//     font-size: 1em;
-//     height: 20px;
-//     text-align: left;
-//     width: 200px;
-//     -webkit-transition: all 1s;
-//   }
-// }
+.title {
+  opacity: 0;
+  color: #fff;
+  position: absolute;
+  font-size: 24px;
+  top: 0;
+  left: 0;
+  text-align: center;
+  -webkit-transition: opacity 0.5s;
+  font-family: 'dosisextralight';
+
+  &.active {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s;
+  }
+}
 
 input[name='rotate'] {
   display: none;
@@ -90,12 +93,13 @@ input[name='rotate'] {
     }
   }
 }
-// #left:checked ~ .title {
-//   &:after {
-//     color: #fff;
-//     content: "Call for Proposal";
-//   }
-// }
+
+#left:checked ~ .perspective .title {
+  width: 220px;
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateX(-90deg) rotateZ(0deg) translateZ(0em) translateX(-8.5em) translateY(2.5em);
+}
+
 #right:checked ~ .perspective {
   -webkit-transform: rotateX(90deg) rotateZ(90deg);
 
@@ -105,12 +109,13 @@ input[name='rotate'] {
     }
   }
 }
-// #right:checked ~ .title {
-//   &:after {
-//     color: #fff;
-//     content: "Coming soon";
-//   }
-// }
+
+#right:checked ~ .perspective .title {
+  width: 200px;
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateX(-90deg) rotateY(90deg) translateY(2em) translateX(-6.9em);
+}
+
 #up:checked ~ .perspective {
   -webkit-transform: rotateX(0deg) rotateZ(45deg);
 
@@ -120,12 +125,12 @@ input[name='rotate'] {
     background-repeat: no-repeat;
   }
 }
-// #up:checked ~ .title {
-//   &:after {
-//     color: #fff;
-//     content: "Follow us!";
-//   }
-// }
+
+#up:checked ~ .perspective .title {
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateZ(-45deg) translateZ(0em) translateX(-1.8em) translateY(11em);
+}
+
 #left:checked ~ .perspective .cube:after,
 #right:checked ~ .perspective .cube:before,
 #up:checked ~ .perspective .cube {

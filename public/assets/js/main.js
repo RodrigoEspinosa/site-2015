@@ -9,8 +9,7 @@
         DOWN: 40
       },
       $cube = $('.jsconfuy-cube .perspective .cube'),
-      $title = $('.jsconfuy-cube .title'),
-      mc;
+      $title = $('.jsconfuy-cube .title');
 
   var View = function (_title, _view, _options) {
     this.id = View.prototype.uniqueID();
@@ -43,7 +42,7 @@
     }
 
     $cube.one('transitionend', function () {
-      var t = setTimeout(function () {
+      window.cubeTransitionClock = setTimeout(function () {
         $title.html(self.title);
         $title.addClass('active');
       }, 350);
@@ -68,7 +67,7 @@
         left: 0,
       }, 250);
     } else {
-      $('.perspective').one('transitionend', function (e) {
+      $('.perspective').one('transitionend', function () {
         $cube.trigger('transitionend');
         $page.addClass('active').children().animate({
           opacity: 1,
@@ -100,7 +99,7 @@
   App.controllers = {
     homeView: new View('', App.sections.HOME),
     cfpView: new View('Call for proposals', App.sections.CFP, {pullLeft: true}),
-    commingSoonView: new View('Comming soon', App.sections.COMMING_SOON),
+    commingSoonView: new View('Coming soon', App.sections.COMMING_SOON),
     twitterView: new View('Follow us!', App.sections.TWITTER)
   };
 
@@ -121,11 +120,11 @@
     }
   });
 
-  $('body').hammer()  
-    .bind('panleft panright panup pandown', function(ev) {
-      this.panEvent = ev.type;
+  $('body').hammer()
+    .bind('panleft panright panup pandown', function (event) {
+      this.panEvent = event.type;
     })
-    .bind('panend', function(ev) {
+    .bind('panend', function () {
       if (this.panEvent) {
 
         switch (this.panEvent) {
@@ -147,11 +146,11 @@
       }
     });
 
-  function renderView (view) {
+  var renderView = function (view) {
     if (App.currentView !== view.id) {
       view.render();
     }
-  }
+  };
 
   renderView(App.controllers.homeView);
 

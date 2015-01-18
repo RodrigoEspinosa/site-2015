@@ -70,12 +70,10 @@ body {
   left: 0;
   text-align: center;
   -webkit-transition: opacity 0.5s;
-  font-family: 'dosisextralight';
-}
-.title.active {
-  opacity: 1;
-  -webkit-transition: opacity 0.5s;
-}
+  font-family: 'dosisextralight'; }
+  .title.active {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s; }
 
 input[name='rotate'] {
   display: none; }
@@ -86,19 +84,21 @@ input[name='rotate'] {
     background-image: url("http://mwdg.us/jsconfuy/cube-2.svg");
     background-repeat: no-repeat;
     opacity: 1; }
-  #left:checked ~ .perspective .title {
-    width: 220px;
-    -webkit-transform-origin: 0;
-    -webkit-transform: rotateX(-90deg) rotateZ(0deg) translateZ(0em) translateX(-8.5em) translateY(2.5em); }
+
+#left:checked ~ .perspective .title {
+  width: 220px;
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateX(-90deg) rotateZ(0deg) translateZ(0em) translateX(-8.5em) translateY(2.5em); }
 
 #right:checked ~ .perspective {
   -webkit-transform: rotateX(90deg) rotateZ(90deg); }
   #right:checked ~ .perspective .cube:before {
     opacity: 1; }
-  #right:checked ~ .perspective .title {
-    width: 200px;
-    -webkit-transform-origin: 0; 
-    -webkit-transform: rotateX(-90deg) rotateY(90deg) translateY(2em) translateX(-6.9em); }
+
+#right:checked ~ .perspective .title {
+  width: 200px;
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateX(-90deg) rotateY(90deg) translateY(2em) translateX(-6.9em); }
 
 #up:checked ~ .perspective {
   -webkit-transform: rotateX(0deg) rotateZ(45deg); }
@@ -106,9 +106,10 @@ input[name='rotate'] {
     background-color: #FFFFFA;
     background-image: url("http://mwdg.us/jsconfuy/cube-3.svg");
     background-repeat: no-repeat; }
-  #up:checked ~ .perspective .title {
-    -webkit-transform-origin: 0;
-    -webkit-transform: rotateZ(-45deg) translateZ(0em) translateX(-1.8em) translateY(11em); }
+
+#up:checked ~ .perspective .title {
+  -webkit-transform-origin: 0;
+  -webkit-transform: rotateZ(-45deg) translateZ(0em) translateX(-1.8em) translateY(11em); }
 
 #left:checked ~ .perspective .cube:after, #right:checked ~ .perspective .cube:before, #up:checked ~ .perspective .cube {
   border-radius: 5px; }
@@ -118,7 +119,6 @@ input[name='rotate'] {
   position: absolute; }
   .page.active {
     display: block; }
-
   .page .message {
     background: #024e71;
     border-radius: 3px;
@@ -126,7 +126,6 @@ input[name='rotate'] {
     font-size: 14px;
     color: #fff;
     text-align: center; }
-
   .page.home {
     top: calc(50% + 150px);
     left: calc(50% - 8em);
@@ -135,15 +134,15 @@ input[name='rotate'] {
     top: calc(50% - 140px);
     right: calc(50% - 16em);
     width: 16em; }
-    .page.cfp form {
-      position: relative;
-      opacity: 0;
-      left: -200px; }
     .page.cfp .message {
       top: calc(100% + 12em) !important;
       width: 27em;
       left: calc(50% - 22.5em) !important;
       position: absolute; }
+    .page.cfp form {
+      position: relative;
+      opacity: 0;
+      left: -200px; }
 
 .form-input[type='email'], .form-input[type='text'] {
   background: white;
