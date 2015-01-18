@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>{{ siteTitle }}</title>
+  <link rel="stylesheet" href="{{ fontCss }}">
   <link rel="stylesheet" href="{{ mainCss }}">
 </head>
 <body>
@@ -22,24 +23,29 @@
 
     <!-- <section class="coming-soon page" data-cube-title="Coming soon"></section> -->
 
-    <section class="cfp page" data-cube-title="Call for proposals">
+    <section class="home page">
+      <div class="message">Use arrows or swipe to navigate</div>
+    </section>
+
+    <section class="cfp page">
       <form action="/proposal" method="post">
         <input type="text" class="form-input" placeholder="Name..." name="speaker-name">
         <input type="email" class="form-input" placeholder="Email..." name="speaker-email">
-        <!-- <input type="submit" class="form-input"> -->
       </form>
+      <div class="message">Write your name for unblocking the description field</div>
     </section>
 
     <!-- <section class="twitter page" data-cube-title="Follow us!"></section> -->
   <!-- </div> -->
 
   <footer class="jsconfuy-nav">
-    <nav></nav>
-    <div>&copy; 2015 | JSConfUY - Montevideo, Uruguay</div>
+    <div>JSConfUY - Montevideo, Uruguay</div>
   </footer>
 
   <!-- scripts -->
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="bower_components/hammerjs/hammer.js"></script>
+  <script type="text/javascript" src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

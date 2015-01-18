@@ -28,7 +28,8 @@ server.views({
   helpersPath: Path.join('public', 'templates', 'helpers'),
   context: {
     siteTitle: 'JSConfUY 2015',
-    mainCss: './css/main.css'
+    mainCss: './css/main.css',
+    fontCss: './css/font.css'
   }
 });
 

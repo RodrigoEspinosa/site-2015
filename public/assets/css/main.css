@@ -5,7 +5,7 @@ html {
   height: 100%; }
 
 body {
-  background-color: #073151;
+  background-color: #024164;
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
@@ -57,7 +57,7 @@ body {
       -webkit-transform-origin: 100% 0;
       -webkit-opacity: 0.7; }
     .perspective .cube.pull-left {
-      -webkit-transform: translateX(-15em) translateZ(10em);
+      -webkit-transform: translateX(-11em) translateZ(10em);
       -webkit-transform-origin: 100% 100%;
       -webkit-opacity: 0.85; }
 
@@ -70,6 +70,7 @@ body {
   left: 0;
   text-align: center;
   -webkit-transition: opacity 0.5s;
+  font-family: 'dosisextralight';
 }
 .title.active {
   opacity: 1;
@@ -88,7 +89,7 @@ input[name='rotate'] {
   #left:checked ~ .perspective .title {
     width: 220px;
     -webkit-transform-origin: 0;
-    -webkit-transform: rotateX(-90deg) rotateZ(0deg) translateZ(0em) translateX(-11.2em) translateY(2.5em); }
+    -webkit-transform: rotateX(-90deg) rotateZ(0deg) translateZ(0em) translateX(-8.5em) translateY(2.5em); }
 
 #right:checked ~ .perspective {
   -webkit-transform: rotateX(90deg) rotateZ(90deg); }
@@ -114,24 +115,44 @@ input[name='rotate'] {
 
 .page {
   display: none;
-  position: absolute;
-  top: calc(50% - 120px);
-  right: 8em;
-  width: 16em;
-  z-index: -1; }
+  position: absolute; }
   .page.active {
     display: block; }
-  .page form {
-    position: relative;
-    opacity: 0;
-    left: -200px; }
+
+  .page .message {
+    background: #024e71;
+    border-radius: 3px;
+    padding: 20px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center; }
+
+  .page.home {
+    top: calc(50% + 150px);
+    left: calc(50% - 8em);
+    width: 16em; }
+  .page.cfp {
+    top: calc(50% - 140px);
+    right: calc(50% - 16em);
+    width: 16em; }
+    .page.cfp form {
+      position: relative;
+      opacity: 0;
+      left: -200px; }
+    .page.cfp .message {
+      top: calc(100% + 12em) !important;
+      width: 27em;
+      left: calc(50% - 22.5em) !important;
+      position: absolute; }
 
 .form-input[type='email'], .form-input[type='text'] {
   background: white;
   border: none;
   border-radius: 4px;
   margin: 5px 0;
-  padding: 10px;
+  padding: 10px 10px 10px 25px;
+  font-size: 18px;
+  height: 60px;
   width: 100%; }
 
 footer {
@@ -141,4 +162,4 @@ footer {
   left: 0;
   text-align: center;
   padding: 10px 0;
-  color: #fff; }
+  color: #012539; }

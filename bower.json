@@ -14,5 +14,9 @@
     "public/assets/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "hammerjs": "~2.0.4",
+    "jquery-hammerjs": "~2.0.0"
+  }
 }

@@ -9,7 +9,8 @@
         DOWN: 40
       },
       $cube = $('.jsconfuy-cube .perspective .cube'),
-      $title = $('.jsconfuy-cube .title');
+      $title = $('.jsconfuy-cube .title'),
+      mc;
 
   var View = function (_title, _view, _options) {
     this.id = View.prototype.uniqueID();
@@ -31,7 +32,7 @@
 
     App.currentView = this.id;
 
-    this.view.$el.showPage();
+    this.showPage();
     this.view.section.trigger('click');
 
     $title.removeClass('active').html('');
@@ -47,6 +48,35 @@
         $title.addClass('active');
       }, 350);
     });
+  };
+  View.prototype.showPage = function () {
+    var self = this,
+        $page = this.view.$el;
+
+    $('section.page').each(function () {
+      $(this).removeClass('active').children().animate({
+        opacity: 0,
+        top: '-50px',
+      }, 250, function () {
+        $(this).css({opacity: 0, left: '-50px', top: 0});
+      });
+    });
+
+    if (typeof App.firstLoad === 'undefined') {
+      App.firstLoad = false;
+      $page.addClass('active').children().animate({
+        opacity: 1,
+        left: 0,
+      }, 250);
+    } else {
+      $('.perspective').one('transitionend', function (e) {
+        $cube.trigger('transitionend');
+        $page.addClass('active').children().animate({
+          opacity: 1,
+          left: 0,
+        }, 250);
+      });
+    }
   };
 
   App.sections = {
@@ -74,6 +104,7 @@
     commingSoonView: new View('Comming soon', App.sections.COMMING_SOON),
     twitterView: new View('Follow us!', App.sections.TWITTER)
   };
+  App.controllers.homeView.render();
 
   $(document).on('keyup', function (e) {
     switch (e.which) {
@@ -100,30 +131,38 @@
     }
   });
 
-  $.fn.showPage = function (page) {
-    var $page = (typeof page === 'undefined') ? this : $(page);
+  $('body').hammer()  
+    .bind('panleft panright panup pandown', function(ev) {
+      this.panEvent = ev.type;
+    })
+    .bind('panend', function(ev) {
+      if (this.panEvent) {
 
-    if ($page.hasClass('active')) {
-      return this;
-    }
+        switch (this.panEvent) {
+          case 'panleft':
+            if (App.currentView !== App.controllers.cfpView.id) {
+              App.controllers.cfpView.render();
+            }
+            break;
+          case 'panup':
+            if (App.currentView !== App.controllers.twitterView.id) {
+              App.controllers.twitterView.render();
+            }
+            break;
+          case 'panright':
+            if (App.currentView !== App.controllers.commingSoonView.id) {
+              App.controllers.commingSoonView.render();
+            }
+            break;
+          case 'pandown':
+            if (App.currentView !== App.controllers.homeView.id) {
+              App.controllers.homeView.render();
+            }
+            break;
+        }
 
-    $('section.page').children().animate({
-      opacity: 0,
-      top: '-50px',
-    }, 250, function () {
-      $(this).css({opacity: 0, left: '-50px', top: 0})
-        .parent().removeClass('active');
+        this.panEvent = void 0;
+      }
     });
-
-    $('.perspective').one('transitionend', function () {
-      $cube.trigger('transitionend');
-      $page.addClass('active').children().animate({
-        opacity: 1,
-        left: 0,
-      }, 250);
-    });
-
-    return this;
-  };
 
 }(jQuery));
