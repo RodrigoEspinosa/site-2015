@@ -2,10 +2,13 @@
 <html>
 <head>
   <title>{{ siteTitle }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="{{ fontCss }}">
   <link rel="stylesheet" href="{{ mainCss }}">
 </head>
 <body>
+  <div class="zen-background"></div>
+
   <header class="jsconfuy-cube">
     <input type="radio" id="left" name="rotate">
     <input type="radio" id="reset" name="rotate" checked>
@@ -29,10 +32,10 @@
 
     <section class="cfp page">
       <form action="/proposal" method="post">
-        <input type="text" class="form-input" placeholder="Name..." name="speaker-name">
-        <input type="email" class="form-input" placeholder="Email..." name="speaker-email">
-        <textarea class="shows-name-completed form-input form-input-big" name="talk-description" placeholder="{{ talkPlaceholder }}">
-        </textarea>
+        <input type="text" class="form-input" placeholder="Name..." name="speaker-name" required>
+        <input type="email" class="form-input" placeholder="Email..." name="speaker-email" required>
+        <textarea class="form-input form-input-big shows-name-completed" name="talk-description" placeholder="{{ talkPlaceholder }}" required></textarea>
+        <input type="submit" class="form-input shows-name-completed " value="Submit">
       </form>
       <div class="message">Write your name for unblocking the description field</div>
     </section>
@@ -45,6 +48,7 @@
   </footer>
 
   <!-- scripts -->
+  <script type="text/javascript" src="bower_components/prefixfree/prefixfree.min.js"></script>
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="bower_components/hammerjs/hammer.js"></script>
   <script type="text/javascript" src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>

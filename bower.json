@@ -18,5 +18,8 @@
   "devDependencies": {
     "hammerjs": "~2.0.4",
     "jquery-hammerjs": "~2.0.0"
+  },
+  "dependencies": {
+    "prefixfree": "*"
   }
 }

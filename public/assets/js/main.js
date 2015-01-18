@@ -103,8 +103,12 @@
     twitterView: new View('Follow us!', App.sections.TWITTER)
   };
 
-  $(document).on('keyup', function (e) {
-    switch (e.which) {
+  $(document).on('keyup', function (event) {
+    if ($('input, textarea').is(':focus')) {
+      return undefined;
+    }
+
+    switch (event.which) {
       case arrows.LEFT:
         renderView(App.controllers.cfpView);
         break;
@@ -153,5 +157,28 @@
   };
 
   renderView(App.controllers.homeView);
+
+  //
+  // Events
+  //
+  $('input[name="speaker-name"]').on('keyup', function () {
+    if ($(this).val().trim() !== '') {
+      $('.shows-name-completed').addClass('active');
+      $('.message').fadeOut(250);
+    } else {
+      $('.shows-name-completed').removeClass('active');
+    }
+  });
+
+  $('textarea[name="talk-description"]').on({
+    focus: function () {
+      $(this).addClass('on-zen');
+      $('.zen-background').addClass('active');
+    },
+    blur: function () {
+      $(this).removeClass('on-zen');
+      $('.zen-background').removeClass('active');
+    }
+  });
 
 }(jQuery));

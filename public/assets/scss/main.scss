@@ -25,6 +25,7 @@ body {
 
   font-family: Arial, sans-serif;
   font-size: 100%;
+  margin: 0;
   min-height: 100%;
   overflow: hidden;
 }
@@ -60,7 +61,7 @@ body {
     width: 16em;
 
     .message {
-      top: calc(100% + 12em) !important;
+      top: calc(50% + 12em) !important;
       width: 27em;
       left: calc(50% - 22.5em) !important;
       position: absolute;
@@ -75,17 +76,69 @@ body {
 
 }
 
+.form-input-base {
+  background: white;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 10px 10px 10px 25px;
+  font-size: 18px;
+  height: 60px;
+  // padding: 10px;
+  width: 100%;
+}
+
 .form-input {
   &[type='email'], &[type='text'] {
-    background: white;
-    border: none;
-    border-radius: 4px;
-    margin: 5px 0;
-    padding: 10px 10px 10px 25px;
-    font-size: 18px;
-    height: 60px;
-    // padding: 10px;
-    width: 100%;
+    @extend .form-input-base;
+  }
+  &[type='submit'] {
+    @extend .form-input-base;
+    background: rgb(4, 152, 194);
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.zen-background {
+  background: rgba(255, 255, 255, 0.65);
+  position: absolute;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 250ms;
+  width: 100%;
+  z-index: 100;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+textarea.form-input {
+  @extend .form-input-base;
+
+  &.form-input-big {
+    font-family: monospace;
+    position: relative;
+    min-height: 160px;
+    transition: all 250ms;
+    z-index: 102;
+
+    &.on-zen {
+      margin-top: 24px;
+      margin-left: -100%;
+      width: 200%;
+    }
+  }
+}
+
+.shows-name-completed {
+  opacity: 0;
+  transition: all 250ms;
+
+  &.active {
+    opacity: 1;
   }
 }
 
