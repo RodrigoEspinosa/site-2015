@@ -1,0 +1,28 @@
+//
+// Rambla bold.
+//
+@font-face {
+  font-family: 'Rambla';
+  font-style: normal;
+  src: local('Rambla-Bold'),
+       url('../fonts/Rambla-Bold.woff') format('woff'),
+       url('../fonts/Rambla-Bold.eot') format('embedded-opentype'),
+       url('../fonts/Rambla-Bold.ttf') format('truetype'),
+       url('../fonts/Rambla-Bold.svg') format('svg');
+  font-weight: bold;
+}
+
+//
+// Rambla normal.
+//
+@font-face {
+  font-family: 'Rambla';
+  font-style: normal;
+  src: local('Rambla-Regular'),
+       local('Rambla'),
+       url('../fonts/Rambla-Regular.woff') format('woff'),
+       url('../fonts/Rambla-Regular.eot') format('embedded-opentype'),
+       url('../fonts/Rambla-Regular.ttf') format('truetype'),
+       url('../fonts/Rambla-Regular.svg') format('svg');
+  font-weight: normal;
+}

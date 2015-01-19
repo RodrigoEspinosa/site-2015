@@ -47,8 +47,7 @@
   top: 0;
   left: 0;
   text-align: center;
-  -webkit-transition: opacity 0.5s;
-  font-family: 'dosisextralight'; }
+  -webkit-transition: opacity 0.5s; }
   .title.active {
     opacity: 1;
     -webkit-transition: opacity 0.5s; }

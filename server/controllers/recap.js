@@ -6,7 +6,6 @@
     '',
     'Talk description here... this is markdown powered.',
     '',
-    '',
     '------------',
     'My company can pay for my expenses? Yes, no, partialy.'
   ].join('\n');
