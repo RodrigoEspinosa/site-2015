@@ -13,6 +13,7 @@
     { method: 'GET', path: '/admin/logout', config: adminControllers.logout },
 
     { method: 'GET', path: '/talks', config: talksControllers.index },
+    { method: 'POST', path: '/talks', config: talksControllers.create },
 
     // Set the site assets
     require('./assets')

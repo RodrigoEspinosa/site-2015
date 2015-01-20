@@ -21,27 +21,19 @@
     </div>
   </header>
 
-  <!-- <div class="container"> -->
-    <!-- <section class="home page" data-cube-title="Home"></section> -->
+  <section class="home page">
+    <div class="message">Use arrows or swipe to navigate</div>
+  </section>
 
-    <!-- <section class="coming-soon page" data-cube-title="Coming soon"></section> -->
-
-    <section class="home page">
-      <div class="message">Use arrows or swipe to navigate</div>
-    </section>
-
-    <section class="cfp page">
-      <form action="/proposal" method="post">
-        <input type="text" class="form-input" placeholder="Name..." name="speaker-name" required>
-        <input type="email" class="form-input" placeholder="Email..." name="speaker-email" required>
-        <textarea class="form-input form-input-big shows-name-completed" name="talk-description" placeholder="{{ talkPlaceholder }}" required></textarea>
-        <input type="submit" class="form-input shows-name-completed " value="Submit">
-      </form>
-      <div class="message">Write your name for unblocking the description field</div>
-    </section>
-
-    <!-- <section class="twitter page" data-cube-title="Follow us!"></section> -->
-  <!-- </div> -->
+  <section class="cfp page">
+    <form action="/talks" method="POST">
+      <input type="text" class="form-input" placeholder="Name..." name="speaker-name" required>
+      <input type="email" class="form-input" placeholder="Email..." name="speaker-email" required>
+      <textarea class="form-input form-input-big shows-name-completed" name="talk-description" placeholder="{{ talkPlaceholder }}" required></textarea>
+      <input type="submit" class="form-input shows-name-completed " value="Submit">
+    </form>
+    <div class="message">Write your name for unblocking the description field</div>
+  </section>
 
   <footer class="jsconfuy-nav">
     <div>JSConfUY - Montevideo, Uruguay</div>

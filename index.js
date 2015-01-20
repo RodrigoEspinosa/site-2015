@@ -29,7 +29,8 @@ server.views({
   context: {
     siteTitle: 'JSConfUY 2015',
     mainCss: './css/main.css',
-    fontCss: './css/font.css'
+    fontCss: './css/font.css',
+    simpleCss: './css/simple.css'
   }
 });
 

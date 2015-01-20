@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ siteTitle }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ simpleCss }}">
+</head>
+<body>
+  <h1 class="title">Yey! Talk saved.</h1>
+
+  <section class="summary">
+    <p>
+      <span class="item-title">Your name</span>
+      <span class="item">{{ talk.speaker.name }}</span>
+    </p>
+    <p>
+      <span class="item-title">Your email</span>
+      <span class="item">{{ talk.speaker.email }}</span>
+    </p>
+    <p>
+      <span class="item-title">Talk description</span>
+      <span class="item">{{ talk.description }}</span>
+    </p>
+  </section>
+
+  <footer class="jsconfuy-nav">
+    <div>JSConfUY - Montevideo, Uruguay</div>
+  </footer>
+</body>
+</html>

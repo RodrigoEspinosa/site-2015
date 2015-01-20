@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'Rambla';
+  font-style: normal;
+  src: local('Rambla-Bold'), url('../fonts/Rambla-Bold.woff') format('woff'), url('../fonts/Rambla-Bold.eot') format('embedded-opentype'), url('../fonts/Rambla-Bold.ttf') format('truetype'), url('../fonts/Rambla-Bold.svg') format('svg');
+  font-weight: bold; }
+
+@font-face {
+  font-family: 'Rambla';
+  font-style: normal;
+  src: local('Rambla-Regular'), local('Rambla'), url('../fonts/Rambla-Regular.woff') format('woff'), url('../fonts/Rambla-Regular.eot') format('embedded-opentype'), url('../fonts/Rambla-Regular.ttf') format('truetype'), url('../fonts/Rambla-Regular.svg') format('svg');
+  font-weight: normal; }
+
+* {
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+
+body {
+  color: white;
+  background-color: #024164;
+  font-family: 'Rambla', sans-serif;
+  font-size: 100%;
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden; }
+
+.jsconfuy-cube, .zen-background {
+  display: none; }
+
+.form-input-base, .form-input[type='email'], .form-input[type='text'], .form-input[type='submit'], textarea.form-input {
+  background: white;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 10px 10px 10px 25px;
+  font-family: 'Rambla', sans-serif;
+  font-size: 18px;
+  height: 60px;
+  width: 100%; }
+
+.form-input[type='submit'] {
+  background: #0498c2;
+  color: white;
+  cursor: pointer; }
+
+textarea.form-input.form-input-big {
+  font-family: monospace;
+  position: relative;
+  min-height: 190px;
+  transition: all 250ms;
+  z-index: 102; }
+
+.shows-name-completed {
+  opacity: 0;
+  transition: all 250ms; }
+  .shows-name-completed.active {
+    opacity: 1; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  padding: 10px 0;
+  color: #012539; }
+
+.title {
+  padding: 20px;
+  text-align: center; }
+
+.summary {
+  margin: 0 auto;
+  padding: 20px 20px; }
+  .summary .item-title {
+    color: burlywood;
+    display: block;
+    font-size: 0.8em;
+    margin-top: 10px; }
+  .summary .item {
+    display: block;
+    padding: 4px 0;
+    width: 100%; }

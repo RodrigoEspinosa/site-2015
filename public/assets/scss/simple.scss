@@ -1,0 +1,105 @@
+@import 'fonts';
+
+$blue: rgb(7, 49, 81);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  color: white;
+  background-color: #024164;
+  font-family: 'Rambla', sans-serif;
+  font-size: 100%;
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.jsconfuy-cube, .zen-background {
+  display: none;
+}
+
+.form-input-base {
+  background: white;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 10px 10px 10px 25px;
+  font-family: 'Rambla', sans-serif;
+  font-size: 18px;
+  height: 60px;
+  // padding: 10px;
+  width: 100%;
+}
+
+.form-input {
+  &[type='email'], &[type='text'] {
+    @extend .form-input-base;
+  }
+  &[type='submit'] {
+    @extend .form-input-base;
+    background: rgb(4, 152, 194);
+    color: white;
+    cursor: pointer;
+  }
+}
+
+textarea.form-input {
+  @extend .form-input-base;
+
+  &.form-input-big {
+    font-family: monospace;
+    position: relative;
+    min-height: 190px;
+    transition: all 250ms;
+    z-index: 102;
+  }
+}
+
+.shows-name-completed {
+  opacity: 0;
+  transition: all 250ms;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  padding: 10px 0;
+  color: #012539;
+}
+
+.title {
+  padding: 20px;
+  text-align: center;
+}
+
+.summary {
+  margin: 0 auto;
+  padding: 20px 20px;
+
+  .item-title {
+    color: rgb(222, 184, 135);
+    display: block;
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+
+  .item {
+    // border-bottom: 1px solid #012539;
+    display: block;
+    padding: 4px 0;
+    width: 100%;
+  }
+}

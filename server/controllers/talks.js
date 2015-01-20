@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  var Talk = require('./../database').Talk;
+  var Talk = require('./../database').Talk,
+      Proposal = require('./../database').Proposal;
 
   module.exports.index = {
     handler: function (request, reply) {
@@ -13,7 +14,22 @@
 
   module.exports.create = {
     handler: function (request, reply) {
-      reply('POST');
+      var talk = new Proposal ({
+        speaker: {
+          name: request.payload['speaker-name'],
+          email: request.payload['speaker-email']
+        },
+        description: request.payload['talk-description']
+      });
+
+      talk.save(function (err, talk) {
+        if (err) { console.error(err); }
+        console.log('New proposal: ', talk);
+      });
+
+      return reply.view('created-talk.html', {
+        talk: talk
+      });
     }
   };
 

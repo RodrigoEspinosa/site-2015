@@ -16,10 +16,11 @@
   });
 
   module.exports.Proposal = mongoose.model('Proposal', {
-    text: String
+    speaker: { name: String, email: String },
+    description: String
   });
 
-  module.exports.Speaker = mongoose.model('Spekaer', {
+  module.exports.Speaker = mongoose.model('Speaker', {
     name: String,
     email: String
   });
