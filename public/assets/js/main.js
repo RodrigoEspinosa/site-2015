@@ -47,6 +47,8 @@
         $title.addClass('active');
       }, 350);
     });
+
+    document.location.hash = this.view.url;
   };
   View.prototype.showPage = function () {
     var $page = this.view.$el;
@@ -79,18 +81,22 @@
 
   App.sections = {
     CFP: {
+      url: 'cfp',
       $el: $('section.cfp'),
       section: $('#left')
     },
     HOME: {
+      url: '',
       $el: $('section.home'),
       section: $('#reset')
     },
     COMMING_SOON: {
+      url: 'coming-soon',
       $el: $('section.coming-soon'),
       section: $('#right')
     },
     TWITTER: {
+      url: 'twitter',
       $el: $('section.twitter'),
       section: $('#up')
     }
@@ -156,8 +162,6 @@
     }
   };
 
-  renderView(App.controllers.homeView);
-
   //
   // Events
   //
@@ -179,6 +183,23 @@
       $(this).removeClass('on-zen');
       $('.zen-background').removeClass('active');
     }
+  });
+
+  $(document).on('ready', function () {
+    switch (document.location.hash) {
+      case '#cfp':
+        renderView(App.controllers.cfpView);
+        break;
+      case '#twitter':
+        renderView(App.controllers.twitterView);
+        break;
+      case '#coming-soon':
+        renderView(App.controllers.commingSoonView);
+        break;
+      default:
+        renderView(App.controllers.homeView);
+        break;
+      }
   });
 
 }(jQuery));

@@ -28,7 +28,7 @@
     <form action="/talks" method="POST">
       <input type="text" class="form-input" placeholder="Name..." name="speaker-name" required>
       <input type="email" class="form-input" placeholder="Email..." name="speaker-email" required>
-      <textarea class="form-input form-input-big shows-name-completed" name="talk-description" placeholder="{{ talkPlaceholder }}" required></textarea>
+      <textarea class="form-input form-input-big shows-name-completed" name="talk-description" placeholder="{{ talkPlaceholder }}" required>{{ talkPlaceholder }}</textarea>
       <input type="submit" class="form-input shows-name-completed " value="Submit">
     </form>
     <div class="message">Write your name for unblocking the description field</div>

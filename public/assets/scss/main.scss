@@ -109,7 +109,7 @@ a {
 }
 
 .zen-background {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   position: absolute;
   height: 100%;
   pointer-events: none;
@@ -134,7 +134,10 @@ textarea.form-input {
     z-index: 102;
 
     &.on-zen {
-      margin-top: 24px;
+      background: white;
+      // background: rgba(255, 255, 255, 0);
+      min-height: 400px;
+      margin-top: -200px;
       margin-left: -102%;
       width: 202%;
     }
