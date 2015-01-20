@@ -34,10 +34,6 @@ body {
   min-height: 100%;
   overflow: hidden; }
 
-a {
-  color: white;
-  text-decoration: none; }
-
 .jsconfuy-cube {
   height: 10em;
   width: 10em;
@@ -131,6 +127,10 @@ input[name='rotate'] {
 #left:checked ~ .perspective .cube:after, #right:checked ~ .perspective .cube:before, #up:checked ~ .perspective .cube {
   border-radius: 5px; }
 
+a {
+  color: white;
+  text-decoration: none; }
+
 .page {
   display: none;
   position: absolute; }
@@ -205,6 +205,9 @@ textarea.form-input.form-input-big {
   transition: all 250ms; }
   .shows-name-completed.active {
     opacity: 1; }
+
+.coc {
+  padding: 10px; }
 
 footer {
   position: absolute;
