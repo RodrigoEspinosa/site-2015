@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  var Talk = require('./../database').Talk,
+  var markdown = require('markdown').markdown,
+      Talk = require('./../database').Talk,
       Proposal = require('./../database').Proposal;
 
   module.exports.index = {
@@ -14,7 +15,7 @@
 
   module.exports.create = {
     handler: function (request, reply) {
-      var talk = new Proposal ({
+      var talk = new Proposal({
         speaker: {
           name: request.payload['speaker-name'],
           email: request.payload['speaker-email']
@@ -28,7 +29,25 @@
       });
 
       return reply.view('created-talk.html', {
-        talk: talk
+        talk: talk,
+        description: markdown.toHTML(talk.description)
+      });
+    }
+  };
+
+  module.exports.view = {
+    handler: function (request, reply) {
+      Proposal.findOne({_id: request.params.id}, function (err, proposal) {
+        if (err) {
+          console.error(err);
+          return reply(err);
+        }
+
+        console.log('Viewing proposal: ', proposal);
+        return reply.view('created-talk.html', {
+          talk: proposal,
+          description: markdown.toHTML(proposal.description)
+        });
       });
     }
   };

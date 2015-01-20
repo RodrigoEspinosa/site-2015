@@ -15,6 +15,8 @@
     { method: 'GET', path: '/talks', config: talksControllers.index },
     { method: 'POST', path: '/talks', config: talksControllers.create },
 
+    { method: 'GET', path: '/proposals/{id}', config: talksControllers.view },
+
     // Set the site assets
     require('./assets')
   ];
