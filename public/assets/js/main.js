@@ -98,7 +98,7 @@
 
   App.controllers = {
     homeView: new View('', App.sections.HOME),
-    cfpView: new View('Call for proposals', App.sections.CFP, {pullLeft: true}),
+    cfpView: new View('Call for proposals, open until Feb 1st', App.sections.CFP, {pullLeft: true}),
     commingSoonView: new View('Coming soon', App.sections.COMMING_SOON),
     twitterView: new View('Follow us!', App.sections.TWITTER)
   };

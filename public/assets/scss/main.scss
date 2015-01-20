@@ -22,7 +22,7 @@ body {
   // background-color: $blue;
   // background-color: rgb(2,65,100);
   background-color: #024164;
-
+  color: #cecece;
   @include displayFlex();
 
   font-family: 'Rambla', sans-serif;
@@ -33,6 +33,11 @@ body {
 }
 
 @import 'jsconfuy-cube';
+
+a {
+  color: white;
+  text-decoration: none;
+}
 
 .page {
   display: none;
@@ -152,5 +157,5 @@ footer {
   left: 0;
   text-align: center;
   padding: 10px 0;
-  color: #012539;
+  color: #cecece;
 }

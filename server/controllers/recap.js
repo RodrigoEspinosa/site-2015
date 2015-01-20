@@ -4,10 +4,11 @@
   var talkPlaceholderText = [
     '# TALK NAME',
     '',
-    'Talk description here... this is markdown powered.',
+    'Please write your talk description here, explaining what\'s about... this is markdown powered.',
+    'Remember that everyone in the conference must adhere to the code of conduct',
     '',
     '------------',
-    'My company can pay for my expenses? Yes, no, partialy.'
+    'Let us know if you or your company can cover your expenses or if you need us to assist you.'
   ].join('\n');
 
   exports.index = {
@@ -15,6 +16,11 @@
       return reply.view('index.html', {
         talkPlaceholder: talkPlaceholderText
       });
+    }
+  };
+  exports.codeOfConduct = {
+    handler: function(request, reply) {
+      return reply.view('code-of-conduct.html');
     }
   };
 

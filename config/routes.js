@@ -7,6 +7,7 @@
 
   module.exports = [
   	{ method: 'GET', path: '/', config: recapControllers.index },
+    { method: 'GET', path: '/code-of-conduct', config: recapControllers.codeOfConduct },
 
     { method: 'GET', path: '/admin', config: adminControllers.index },
     { method: ['GET', 'POST'], path: '/admin/login', config: adminControllers.login },

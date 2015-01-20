@@ -18,6 +18,7 @@ html {
 
 body {
   background-color: #024164;
+  color: #cecece;
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
@@ -32,6 +33,10 @@ body {
   margin: 0;
   min-height: 100%;
   overflow: hidden; }
+
+a {
+  color: white;
+  text-decoration: none; }
 
 .jsconfuy-cube {
   height: 10em;
@@ -208,4 +213,4 @@ footer {
   left: 0;
   text-align: center;
   padding: 10px 0;
-  color: #012539; }
+  color: #cecece; }
